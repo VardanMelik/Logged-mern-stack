@@ -2,6 +2,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
+const exercisesRouter = require('./routes/exercises')
+const userRouter = require('./routes/users')
+
 require('dotenv').config()
 
 const app = express()
@@ -20,6 +23,9 @@ connection.once('open', () => {
 // Middle ware
 app.use(cors())
 app.use(express.json())
+
+app.use('/exercises', exercisesRouter)
+app.use('/users', userRouter)
 
 
 
